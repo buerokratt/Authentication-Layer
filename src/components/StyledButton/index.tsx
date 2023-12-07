@@ -1,5 +1,3 @@
-/* eslint-disable react/require-default-props */
-/* eslint-disable no-shadow */
 import React, { HTMLAttributes, ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 import { ASK_PERMISSION_BUTTON_TIMEOUT_MS } from '../../utils/constants';
@@ -14,9 +12,9 @@ export enum StyledButtonType {
 type StyledButtonProps = {
   active?: boolean;
   children?: ReactNode;
-  disabled?: boolean; // NOTE: Does not exist in HTMLButtonElement
+  disabled?: boolean;
   styleType: StyledButtonType;
-  timeout?: number; // NOTE: Does not exist in HTMLButtonElement
+  timeout?: number;
 } & HTMLAttributes<HTMLButtonElement>;
 
 export default function StyledButton(props: StyledButtonProps): JSX.Element {

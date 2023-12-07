@@ -1,19 +1,15 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import { Redirect, Route, RouteProps, Switch } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import styled from "styled-components";
 import { RootState } from "../store";
 import { ROLES } from "../utils/constants";
-import Administration from "../views/administration/administration";
-import Training from "../views/training/training";
 import AuthenticationCallback from "../views/authentication-callback";
-import Chats from "../views/chats/chats";
 import PasswordLogin from "../views/password-login";
 import TaraLogin from "../views/tara-login";
 import PrivateRoute from "./private-route";
 import LandingPage from "./landing-page";
-import Analytics from "../views/analytics/analytics";
 
 const Routes = (): JSX.Element => {
   const { i18n } = useTranslation();
@@ -25,42 +21,18 @@ const Routes = (): JSX.Element => {
 
   const languageSegment = `/:lang(${langs})`;
 
-  const publicRouteComponents = [{ component: TaraLogin, route: "/log-in" }];
-  if (window._env_.PASSWORD_AUTH_ENABLED)
+  const publicRouteComponents = [
+    { component: TaraLogin, route: "/log-in" },
+  ]
+
+  if (window._env_.PASSWORD_AUTH_ENABLED) {
     publicRouteComponents.push({
       component: PasswordLogin,
       route: "/dev-auth",
     });
+  }
 
   const privateRouteComponents = [
-    {
-      component: Chats,
-      route: "/chats",
-      requiredRoles: [
-        ROLES.ROLE_ADMINISTRATOR,
-        ROLES.ROLE_SERVICE_MANAGER,
-        ROLES.ROLE_CUSTOMER_SUPPORT_AGENT,
-      ],
-    },
-    {
-      component: Administration,
-      route: "/administration",
-      requiredRoles: [ROLES.ROLE_ADMINISTRATOR],
-    },
-    {
-      component: Training,
-      route: "/training",
-      requiredRoles: [ROLES.ROLE_ADMINISTRATOR, ROLES.ROLE_CHATBOT_TRAINER],
-    },
-    {
-      component: Analytics,
-      route: "/analytics",
-      requiredRoles: [
-        ROLES.ROLE_ADMINISTRATOR,
-        ROLES.ROLE_ANALYST,
-        ROLES.ROLE_SERVICE_MANAGER,
-      ],
-    },
     {
       component: LandingPage,
       route: "",
@@ -74,15 +46,11 @@ const Routes = (): JSX.Element => {
     },
   ];
 
-  const RoutePublic = ({ component: Component, path }: RouteProps) => (
-    <Route component={Component} path={path} />
-  );
-
   return (
     <RouteStyles className="routes">
       <Switch>
         {publicRouteComponents.map(({ component, route }) => (
-          <RoutePublic
+          <Route
             key={route}
             path={`${languageSegment}${route}`}
             exact
