@@ -1,6 +1,5 @@
 import * as timeago from 'timeago.js';
 
-// TODO: Make a pull request for et_EE library to be added
 function locale(number: number, index: number) {
   return [
     ['just nüüd', 'praegu'],

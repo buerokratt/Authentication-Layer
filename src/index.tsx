@@ -11,7 +11,7 @@ import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
 import './index.scss';
 
-import './i18n';
+import './locale/i18n';
 import './locale/et_EE';
 
 ReactDOM.render(

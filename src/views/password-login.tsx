@@ -9,8 +9,8 @@ import EU_SF_logo_src from '../static/sf_logo_horizontal.jpg';
 import StyledButton, { StyledButtonType } from '../components/StyledButton';
 import { RootState, useAppDispatch } from '../store';
 import { loginUser } from '../slices/authentication.slice';
-import './password-login.scss';
 import { ROLE_MATRIX } from '../utils/constants';
+import './password-login.scss';
 
 const PasswordLogin = (): ReactElement => {
   const history = useHistory();

@@ -2,7 +2,6 @@ import React, { ReactElement, RefObject, useEffect, useRef } from 'react';
 import { Toast } from 'primereact/toast';
 import { addLocale } from 'primereact/api';
 import { Menu } from './components/menu/menu';
-import Routes from './components/routes';
 import { getUserinfo, verifyAuthentication } from './slices/authentication.slice';
 import { useAppDispatch, useAppSelector } from './store';
 import { SESSION_STORAGE_JWT_VERIFY } from './utils/constants';
@@ -55,7 +54,6 @@ const App = (): ReactElement => {
         <Toast ref={toast} />
         {isAuthenticated && <AuthenticationExpirationModal />}
         {isAuthenticated && <Menu />}
-        <Routes />
       </ToastContext.Provider>
     </>
   );
