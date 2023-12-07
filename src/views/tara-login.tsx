@@ -32,7 +32,6 @@ const TaraLogin = (): ReactElement => {
   }, [isAuthenticated, roleMatrix, i18n, roles, history]);
 
   const navigateToTARA = () => {
-    alert(window._env_.TARA_REDIRECT_URL);
     window.location.href = window._env_.TARA_REDIRECT_URL;
   };
 

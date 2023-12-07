@@ -9,8 +9,6 @@ export interface AuthenticationState {
   authenticationFailed: boolean;
   userAuthorities: ROLES[];
   userLogin: string;
-  isCustomerSupportActive: boolean;
-  customerSupportId: string;
 }
 
 const initialState: AuthenticationState = {
@@ -19,8 +17,6 @@ const initialState: AuthenticationState = {
   authenticationFailed: false,
   userAuthorities: [],
   userLogin: '',
-  isCustomerSupportActive: false,
-  customerSupportId: '',
 };
 
 export const loginUser = createAsyncThunk('auth/loginUser', async (args: { login: string; pass: string }) =>
@@ -47,21 +43,6 @@ export const customJwtExtend = createAsyncThunk('auth/customJwtExtend', (arg, th
 
 export const getUserinfo = createAsyncThunk('auth/getUserinfo', () => CustomJwtService.customJwtUserinfo());
 
-export const getCustomerSupportStatus = createAsyncThunk('admins/getCustomerSupportStatus', async (arg, thunkAPI) => {
-  const {
-    authentication: { customerSupportId },
-  } = thunkAPI.getState() as { authentication: AuthenticationState };
-
-  return AuthenticationService.getCustomerSupportStatus(customerSupportId);
-});
-
-export const setCustomerSupportStatus = createAsyncThunk('admins/setCustomerSupportStatus', async (isCustomerSupportActive: string, thunkApi) => {
-  const {
-    authentication: { customerSupportId },
-  } = thunkApi.getState() as { authentication: AuthenticationState };
-
-  return AuthenticationService.setCustomerSupportStatus(isCustomerSupportActive, customerSupportId);
-});
 
 export const authenticationSlice = createSlice({
   name: 'authentication',
@@ -80,7 +61,7 @@ export const authenticationSlice = createSlice({
       state.jwtExpirationTimestamp = action.payload?.JWTExpirationTimestamp;
       state.userAuthorities = action.payload?.authorities as ROLES[];
       state.userLogin = action.payload?.displayName;
-      state.customerSupportId = action.payload?.idCode;
+      // state.customerSupportId = action.payload?.idCode;
     });
     builder.addCase(verifyAuthentication.fulfilled, (state) => {
       if (!state.isAuthenticated) state.isAuthenticated = true;
@@ -111,13 +92,6 @@ export const authenticationSlice = createSlice({
       state.isAuthenticated = false;
       state.userAuthorities = [];
       window.sessionStorage.removeItem(SESSION_STORAGE_JWT_VERIFY);
-    });
-    builder.addCase(getCustomerSupportStatus.fulfilled, (state, action) => {
-      if (action.payload.length === 0) return;
-      state.isCustomerSupportActive = action.payload[0].active === 'true';
-    });
-    builder.addCase(setCustomerSupportStatus.fulfilled, (state) => {
-      state.isCustomerSupportActive = !state.isCustomerSupportActive;
     });
   },
 });

@@ -6,7 +6,6 @@ import { useHistory } from 'react-router';
 import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch, useAppSelector } from '../store';
 import { customJwtExtend, logoutUser } from '../slices/authentication.slice';
-import { removeSupportFromChat } from '../slices/chats.slice';
 
 const AuthenticationExpirationModal = (): JSX.Element => {
   const { i18n, t } = useTranslation();
@@ -14,7 +13,6 @@ const AuthenticationExpirationModal = (): JSX.Element => {
   const dispatch = useAppDispatch();
 
   const [visibility, setVisibility] = useState(false);
-  const customerSupportId = useAppSelector((state) => state.authentication.customerSupportId);
   const JWTExpirationTimestamp: string | null = useSelector((state: RootState) => state.authentication.jwtExpirationTimestamp);
 
   useEffect(() => {
@@ -23,10 +21,8 @@ const AuthenticationExpirationModal = (): JSX.Element => {
       const timeLeftUntilExpiry = Number(JWTExpirationTimestamp) - Date.now();
       setVisibility(timeLeftUntilExpiry < 5 * 60 * 1000);
       if (timeLeftUntilExpiry <= 0) {
-        dispatch(removeSupportFromChat(customerSupportId)).then(() => {
-          dispatch(logoutUser());
-          history.push(`/${i18n.language}/log-in`);
-        });
+        dispatch(logoutUser());
+        history.push(`/${i18n.language}/log-in`);
       }
     };
 
@@ -34,7 +30,7 @@ const AuthenticationExpirationModal = (): JSX.Element => {
     const expirationInterval: NodeJS.Timer = setInterval(() => checkAuthenticationVerification(), 10000);
 
     return () => clearInterval(expirationInterval);
-  }, [JWTExpirationTimestamp, customerSupportId, dispatch, history, i18n.language]);
+  }, [JWTExpirationTimestamp, dispatch, history, i18n.language]);
 
   const footer = () => (
     <div>
@@ -43,10 +39,8 @@ const AuthenticationExpirationModal = (): JSX.Element => {
         label={t('authentication.expirationModule.end')}
         icon="pi pi-times"
         onClick={() => {
-          dispatch(removeSupportFromChat(customerSupportId)).then(() => {
-            dispatch(logoutUser());
-            history.push(`/${i18n.language}/log-in`);
-          });
+          dispatch(logoutUser());
+          history.push(`/${i18n.language}/log-in`);
         }}
       />
     </div>
