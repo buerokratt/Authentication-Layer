@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { ReactComponent as BuerokrattLogo } from '../static/buerokratt_logo.svg';
 import EU_SF_logo_src from '../static/sf_logo_horizontal.jpg';
 import NEXT_GEN_FLAGS from '../static/NextGen_Rahastanud_EL_NextGeneration.jpg';
-import StyledButton, { StyledButtonType } from '../components/StyledButton';
+import StyledButton, { StyledButtonType } from '../components/styled-button';
 import { RootState } from '../store';
 import { ROLE_MATRIX } from '../utils/constants';
 

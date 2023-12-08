@@ -23,10 +23,6 @@ export const loginUser = createAsyncThunk('auth/loginUser', async (args: { login
   AuthenticationService.login(args.login, args.pass),
 );
 
-export const logoutUser = createAsyncThunk('auth/logoutUser', async () => AuthenticationService.logout());
-
-export const loginAnalytics = createAsyncThunk('auth/loginAnalytics', async () => AuthenticationService.loginAnalytics());
-
 export const loginWithTaraJwt = createAsyncThunk('auth/loginWithTaraJwt', async (arg, thunkApi) => {
   await AuthenticationService.loginWithTaraJwt();
   thunkApi.dispatch(getUserinfo());
@@ -82,16 +78,6 @@ export const authenticationSlice = createSlice({
     });
     builder.addCase(loginWithTaraJwt.fulfilled, (_) => {
       window.location.href = window._env_.BACKOFFICE_URL;
-    });
-    builder.addCase(logoutUser.fulfilled, (state) => {
-      state.isAuthenticated = false;
-      state.userAuthorities = [];
-      window.sessionStorage.removeItem(SESSION_STORAGE_JWT_VERIFY);
-    });
-    builder.addCase(logoutUser.rejected, (state) => {
-      state.isAuthenticated = false;
-      state.userAuthorities = [];
-      window.sessionStorage.removeItem(SESSION_STORAGE_JWT_VERIFY);
     });
   },
 });

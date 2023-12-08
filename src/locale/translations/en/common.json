@@ -4,7 +4,6 @@
     "loggedIn": "You are logged in",
     "loginWithTara": "enter via TARA",
     "loginWithPassword": "log in",
-    "logout": "log out",
     "goLoginPage": "go to login page"
   },
   "toast": {

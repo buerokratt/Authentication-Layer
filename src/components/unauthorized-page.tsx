@@ -5,7 +5,7 @@ import { ReactComponent as BuerokrattLogo } from '../static/buerokratt_logo.svg'
 import EU_SF_logo_src from '../static/sf_logo_horizontal.jpg';
 import NEXT_GEN_FLAGS from '../static/NextGen_Rahastanud_EL_NextGeneration.jpg';
 import { RootState, useAppSelector } from '../store';
-import StyledButton, { StyledButtonType } from './StyledButton';
+import StyledButton, { StyledButtonType } from './styled-button';
 
 const UnauthorizedPage = (): JSX.Element => {
   const isAuthenticated = useAppSelector((state: RootState) => state.authentication.isAuthenticated);

@@ -6,7 +6,7 @@ import { InputText } from 'primereact/inputtext';
 import { Password } from 'primereact/password';
 import { ReactComponent as BuerokrattLogo } from '../static/buerokratt_logo.svg';
 import EU_SF_logo_src from '../static/sf_logo_horizontal.jpg';
-import StyledButton, { StyledButtonType } from '../components/StyledButton';
+import StyledButton, { StyledButtonType } from '../components/styled-button';
 import { RootState, useAppDispatch } from '../store';
 import { loginUser } from '../slices/authentication.slice';
 import { ROLE_MATRIX } from '../utils/constants';

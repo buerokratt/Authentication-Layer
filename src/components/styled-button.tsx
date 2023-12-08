@@ -1,6 +1,6 @@
 import React, { HTMLAttributes, ReactNode } from 'react';
 import styled, { css } from 'styled-components';
-import { ASK_PERMISSION_BUTTON_TIMEOUT_MS } from '../../utils/constants';
+import { ASK_PERMISSION_BUTTON_TIMEOUT_MS } from '../utils/constants';
 
 export enum StyledButtonType {
   LIGHT = 'LIGHT',
