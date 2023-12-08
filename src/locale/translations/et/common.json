@@ -1,0 +1,32 @@
+{
+  "routes": {
+    "unauthorized": "Volitamata",
+    "loggedIn": "Olete sisse logitud",
+    "loginWithTara": "sisene TARA kaudu",
+    "loginWithPassword": "sisene",
+    "goLoginPage": "mine esilehele"
+  },
+  "toast": {
+    "success": "Edu",
+    "info": "Teavitus",
+    "warning": "Hoiatus",
+    "error": "Ebaedu"
+  },
+  "legal": {
+    "EU_SF": "Euroopa Liidu Struktuuri- ja Investeerimisfondid",
+    "NEXT_GEN": "Euroopa Liidu taaste- ja vastupidavusrahastu"
+  },
+  "authentication": {
+    "error": "Autentimine ebaõnnestus",
+    "expirationModule": {
+      "header": "sessioon on aegumas",
+      "description": "Palun pikendage või lõpetage oma sessioon",
+      "extend": "pikenda",
+      "end": "lõpeta"
+    }
+  },
+  "generic": {
+    "yes": "jah",
+    "no": "ei"
+  }
+}

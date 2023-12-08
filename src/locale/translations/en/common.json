@@ -1,0 +1,32 @@
+{
+  "routes": {
+    "unauthorized": "Unauthorized",
+    "loggedIn": "You are logged in",
+    "loginWithTara": "enter via TARA",
+    "loginWithPassword": "log in",
+    "goLoginPage": "go to login page"
+  },
+  "toast": {
+    "success": "Success",
+    "info": "Info",
+    "warning": "Warning",
+    "error": "Error"
+  },
+  "legal": {
+    "EU_SF": "European Structural and Investment Funds (ESIF)",
+    "NEXT_GEN": "European, Union Recovery and Resilience Facility"
+  },
+  "authentication": {
+    "error": "Authentication failed",
+    "expirationModule": {
+      "header": "Your session is about to expire",
+      "description": "Please either extend or end your session",
+      "extend": "extend",
+      "end": "end"
+    }
+  },
+  "generic": {
+    "yes": "yes",
+    "no": "no"
+  }
+}
