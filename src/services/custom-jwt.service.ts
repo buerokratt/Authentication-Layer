@@ -6,15 +6,15 @@ export const customJwt = 'customJwtCookie';
 
 class CustomJwtService {
   customJwtBlacklist(): Promise<void> {
-    return http.get('/custom-jwt-blacklist', customJwt);
+    return http.get('/custom-jwt-blacklist');
   }
 
   customJwtExtend(): Promise<void> {
-    return http.get('/custom-jwt-extend', customJwt);
+    return http.get('/custom-jwt-extend');
   }
 
   customJwtUserinfo(): Promise<UserInfo> {
-    return http.get('/custom-jwt-userinfo', customJwt);
+    return http.get('/custom-jwt-userinfo');
   }
 
   customJwtVerify(): Promise<AxiosResponse> {
