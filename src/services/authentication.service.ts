@@ -6,7 +6,7 @@ class AuthenticationService {
   }
 
   loginWithTaraJwt(): Promise<void> {
-    return http.post('/login-with-tara');
+    return http.get('/login-with-tara');
   }
 }
 
