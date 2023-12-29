@@ -6,6 +6,7 @@ import { ROLES, SESSION_STORAGE_JWT_VERIFY } from '../utils/constants';
 export interface AuthenticationState {
   isAuthenticated: boolean;
   jwtExpirationTimestamp: string | null;
+  authenticationResponseTime: string | null;
   authenticationFailed: boolean;
   userAuthorities: ROLES[];
   userLogin: string;
@@ -15,6 +16,7 @@ const initialState: AuthenticationState = {
   isAuthenticated: false,
   jwtExpirationTimestamp: null,
   authenticationFailed: false,
+  authenticationResponseTime: null,
   userAuthorities: [],
   userLogin: '',
 };
@@ -68,16 +70,21 @@ export const authenticationSlice = createSlice({
     });
     builder.addCase(loginUser.rejected, (state) => {
       state.isAuthenticated = false;
+      state.authenticationFailed = true;
+      state.authenticationResponseTime = new Date().toISOString();
     });
-    builder.addCase(loginUser.fulfilled, (_) => {
+    builder.addCase(loginUser.fulfilled, (state) => {
       window.location.href = window._env_.BACKOFFICE_URL;
+      state.authenticationFailed = false;
     });
     builder.addCase(loginWithTaraJwt.rejected, (state) => {
       state.isAuthenticated = false;
       state.authenticationFailed = true;
+      state.authenticationResponseTime = new Date().toISOString();
     });
-    builder.addCase(loginWithTaraJwt.fulfilled, (_) => {
+    builder.addCase(loginWithTaraJwt.fulfilled, (state) => {
       window.location.href = window._env_.BACKOFFICE_URL;
+      state.authenticationFailed = false;
     });
   },
 });
