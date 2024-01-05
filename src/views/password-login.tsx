@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useState } from 'react';
+import React, { ReactElement, useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router';
 import { useSelector } from 'react-redux';
@@ -11,6 +11,7 @@ import { RootState, useAppDispatch } from '../store';
 import { loginUser } from '../slices/authentication.slice';
 import { ROLE_MATRIX } from '../utils/constants';
 import './password-login.scss';
+import { ToastContext } from '../App';
 
 const PasswordLogin = (): ReactElement => {
   const history = useHistory();
@@ -18,9 +19,11 @@ const PasswordLogin = (): ReactElement => {
   const [login, setLogin] = useState('');
   const { t, i18n } = useTranslation();
   const isAuthenticated = useSelector((state: RootState) => state.authentication.isAuthenticated);
+  const authenticationFailed = useSelector((state: RootState) => state.authentication.authenticationFailed);
+  const authenticationResponse = useSelector((state: RootState) => state.authentication.authenticationResponseTime);
   const roles = useSelector((state: RootState) => state.authentication.userAuthorities);
   const [pass, setPass] = useState('');
-
+  const toastContext = useContext(ToastContext);
   const [roleMatrix] = useState(ROLE_MATRIX);
 
   useEffect(() => {
@@ -38,6 +41,17 @@ const PasswordLogin = (): ReactElement => {
     event.preventDefault();
     dispatch(loginUser({ login, pass }));
   };
+
+  useEffect(() => {
+    if (authenticationFailed === true) {
+      toastContext?.current?.show({
+        severity: "error",
+        summary: t("toast.error"),
+        detail: t("authentication.error"),
+      });
+    }
+  }, [authenticationResponse]);
+
 
   return (
     <>
