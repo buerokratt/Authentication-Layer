@@ -30,6 +30,7 @@
     "timeago.js": "^4.0.2"
   },
   "devDependencies": {
+    "ajv": "^8.16.0",
     "eslint": "8.15.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",
