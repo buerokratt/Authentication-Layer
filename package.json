@@ -1,6 +1,6 @@
 {
   "name": "byk-authentication-layer",
-  "version": "0.1.0",
+  "version": "1.1.0",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.1",
@@ -37,7 +37,8 @@
     "eslint-config-react-app": "7.0.1",
     "prettier": "2.4.1",
     "source-map-loader": "^4.0.1",
-    "typescript": "^4.4.4"
+    "typescript": "^4.4.4",
+    "husky": "^9.1.6"
   },
   "scripts": {
     "start": "cross-env PORT=3004 GENERATE_SOURCEMAP=false react-scripts start --host",
@@ -48,7 +49,13 @@
     "lint": "eslint src --ext .js,.ts,.jsx,.tsx",
     "lint:fix": "npm run lint -- --fix",
     "prettier:check": "prettier --check \"{,src/**/,webpack/}*.{json,yml,html,js,ts,tsx,css,scss}\"",
-    "prettier:format": "prettier --write \"{,src/**/,webpack/}*.{json,yml,html,js,ts,tsx,css,scss}\""
+    "prettier:format": "prettier --write \"{,src/**/,webpack/}*.{json,yml,html,js,ts,tsx,css,scss}\"",
+    "prepare": "husky",
+    "changelog": "./generate-changelog.sh",
+    "sync-version": "./sync-version.sh",
+    "bump-patch": "./bump-version.sh patch",
+    "bump-minor": "./bump-version.sh minor",
+    "bump-major": "./bump-version.sh major"
   },
   "browserslist": {
     "production": [
