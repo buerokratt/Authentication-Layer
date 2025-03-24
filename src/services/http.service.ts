@@ -8,6 +8,7 @@ const http = axios.create({
   baseURL: ruuterUrl,
   headers: {
     'Content-Type': 'application/json',
+    'Cache-Control': 'no-cache, no-store, must-revalidate',
   },
   withCredentials: true,
 });
@@ -30,7 +31,7 @@ http.interceptors.response.use((response) => {
 
 export const customJwtAxios = axios.create({
   baseURL: timUrl,
-  headers: { 'Content-Type': 'text/plain' },
+  headers: { 'Content-Type': 'text/plain', 'Cache-Control': 'no-cache, no-store, must-revalidate', },
   withCredentials: true,
 });
 
