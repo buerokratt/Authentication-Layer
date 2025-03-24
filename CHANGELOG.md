@@ -1,8 +1,7 @@
-### 1.1.1 (31, Jan 2025)
-## Features
-- **212**: Added Automated Pipelines by [<u>@1AhmedYasser</u>](https://www.github.com/1AhmedYasser) in [#b7407c8](https://github.com/buerokratt/Authentication-Layer/commit/b7407c8)
+### 1.1.1 (24, Mar 2025)
 ## Chores
-- **212**: Modified Version by [<u>@1AhmedYasser</u>](https://www.github.com/1AhmedYasser) in [#84bb58b](https://github.com/buerokratt/Authentication-Layer/commit/84bb58b)
+- **1231**: Added Cache Control by [<u>@1AhmedYasser</u>](https://www.github.com/1AhmedYasser) in [#fc2acb0](https://github.com/buerokratt/Authentication-Layer/commit/fc2acb0)
+- **69**: Added ruuter url changes by [<u>@1AhmedYasser</u>](https://www.github.com/1AhmedYasser) in [#9b4d440](https://github.com/buerokratt/Authentication-Layer/commit/9b4d440)
 ## Others
-- Merge pull request #44 from 1AhmedYasser/Added-Automated-Pipelines by [<u>@jaX10bt</u>](https://www.github.com/jaX10bt) in [#b256fd8](https://github.com/buerokratt/Authentication-Layer/commit/b256fd8)
-- Modified Version by [<u>@1AhmedYasser</u>](https://www.github.com/1AhmedYasser) in [#7fd5010](https://github.com/buerokratt/Authentication-Layer/commit/7fd5010)
+- Merge pull request #51 from 1AhmedYasser/Bug-Browsers-reading-300-responses-from-disk-cache by [<u>@Varmo</u>](https://www.github.com/Varmo) in [#213fd27](https://github.com/buerokratt/Authentication-Layer/commit/213fd27)
+- Merge pull request #48 from 1AhmedYasser/added-project-layer-to-repos by [<u>@Varmo</u>](https://www.github.com/Varmo) in [#595b39b](https://github.com/buerokratt/Authentication-Layer/commit/595b39b)
