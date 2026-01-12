@@ -18,6 +18,7 @@
   },
   "authentication": {
     "error": "Authentication failed",
+    "unauthorized": "Unauthorized",
     "expirationModule": {
       "header": "Your session is about to expire",
       "description": "Please either extend or end your session",
