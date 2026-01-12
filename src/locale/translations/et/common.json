@@ -18,6 +18,7 @@
   },
   "authentication": {
     "error": "Autentimine ebaõnnestus",
+    "unauthorized": "Ligipääs puudub",
     "expirationModule": {
       "header": "sessioon on aegumas",
       "description": "Palun pikendage või lõpetage oma sessioon",
